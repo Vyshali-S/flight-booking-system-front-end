@@ -1,6 +1,7 @@
 async function authUser(email,password){
     let user = JSON.stringify({email:email,password:password})
-    
+    try{
+        
     const response = await fetch("http://localhost:3000/authUser",{
         method: "POST",
         headers: {
@@ -19,10 +20,17 @@ async function authUser(email,password){
     if(response.status == 400){
         alert(jsonData.message)
     } 
+    
+}
+
+catch(ex){
+    alert("Error occurred while connecting to server...  "+ex)
+}
 }
 
 async function createAccount(name, phone, email, password){
     let bodyContent = JSON.stringify({name:name,phone:phone,email:email,password:password})
+try{
     const response = await fetch("http://localhost:3000/users",{
         method: "POST",
         headers: {
@@ -41,5 +49,10 @@ async function createAccount(name, phone, email, password){
     if(response.status == 400){
         alert(jsonData.message)
     } 
+}
+
+catch(ex){
+    alert("Error occurred while connecting to server...  "+ex)
+}
 }
 
