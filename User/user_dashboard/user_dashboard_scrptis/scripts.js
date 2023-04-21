@@ -1,8 +1,11 @@
 let price = 0;
 let selectedSeats = [];
 addEventListener("DOMContentLoaded",async()=>{
+    
+    welcomeGreeting()
+
     const allFlights = await  getAllFlights()
-    console.log(allFlights)
+    if(!allFlights) return alert("could not fetech all flights")
     renderFlightsJson(allFlights)
 })
 
@@ -51,7 +54,28 @@ async function confirmBooking (){
         alert("you have't sign in yet, please sign in or create new account to continue")
         return
     }
+   let result = bookTickets(user.user._id,flightId,selectedSeats,user.token)
+   if(!result) result
+   alert("booked Ticket !")
+   modal.style.display = "none";
 
 
+}
+
+function logOutUser(){
+    localStorage.removeItem("user")
+    localStorage.removeItem("token")
+    alert("Logging Out")
+    location.reload();
+}
+
+function welcomeGreeting(){
+    let {user} = isUserSignedIn()
+    if(user){
+        console.log(user)
+        welcomeGreatingsDisp.innerHTML = `Welcome Back  <b>${user.name}</b>  <button style="margin-left:10px" class="btn btn-danger" onclick="logOutUser()">Log Out</button>`
+    }else{
+     welcomeGreatingsDisp.innerHTML= `You haven't Signed In... <a href="../user_login/user_login_index.html">Click here to sign in</a>`
+    }
 }
 

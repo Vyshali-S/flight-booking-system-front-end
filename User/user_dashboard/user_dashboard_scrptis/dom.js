@@ -1,7 +1,7 @@
 let flightsContainer = document.querySelector(".displayFligtsContainer")
 let seatsContainer = document.getElementById("seatsContainer")
 let displayTotalAmountForSelectedSeates = document.getElementById("toalAmountForSelectedSeats") 
-
+let welcomeGreatingsDisp  = document.getElementById("welcomeGreatings")
 //model popup
 var modal = document.getElementById("myModal");
 
