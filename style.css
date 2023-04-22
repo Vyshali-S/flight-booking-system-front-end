@@ -6,9 +6,10 @@ body{
 
 
 
-.container{ 
-    margin: 20%;
+.myContainer{ 
+    margin: 10% 20%;
     text-align: center;
-    margin-top: 100px;
+    padding: 2% 3%;
+    font-size: 25px;
 }
 
